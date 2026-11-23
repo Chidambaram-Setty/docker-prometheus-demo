@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 5s  # Collect metrics every 5 seconds
+
+scrape_configs:
+  - job_name: 'my-python-app'
+    static_configs:
+      # 'web-app' matches the service name in docker-compose.yml
+      - targets: ['web-app:8000']

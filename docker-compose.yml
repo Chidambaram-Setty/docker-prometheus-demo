@@ -1,0 +1,15 @@
+services:
+  web-app:
+    build: .
+    ports:
+      - "5000:5000"  # Visit the app here
+      - "8000:8000"  # Raw metrics endpoint
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"  # Prometheus dashboard
+    depends_on:
+      - web-app
